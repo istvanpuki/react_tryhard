@@ -3,45 +3,20 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
 
-  const [resourceType, setResourceType] = useState("posts");
-  //Ha alapból a useEffect nyílfüggvény fgv. teste minden egyes rendereléskor megváltozik (ha a képernyő tartalma módusol, akkor fut le)
-  /*
-  useEffect( () => {
-    console.log("render");
-  });
-  */
-
-  //Amikor megváltozik a resourceType akkor fut le
-  /*
-  useEffect( () => {
-    console.log("resource type change ");
-  }, [resourceType] );
-  */
-
-  //Ha a tömb üres akkor csak 1szer fut le
-  /*
-  useEffect( () => {
-    console.log("onmount ");
-  }, [] );
-  */
-
-
+  const [windowWidth, setwindowWidth] = useState(window.innerWidth);
   
+  const handleResize = () => {
+      setwindowWidth(window.innerWidth);
+  }
+
   useEffect( () => {
-    fetch(`https://jsonplaceholder.typicode.com/${resourceType}`)
-      .then(response => response.json())
-      .then(json => console.log(json))
-  }, [resourceType] );
+      window.addEventListener('resize', handleResize);
+  }, [] );
 
   return (
-    <>
-    <div>
-      <button onClick={ () => setResourceType('posts') }>Posts</button>
-      <button onClick={ () => setResourceType('users') }>Users</button>
-      <button onClick={ () => setResourceType('comments') }>Comments</button> 
-    </div>
-    <h1>{resourceType}</h1>
-    </>
+    
+    <div>{windowWidth}</div> 
+    
   );
 }
 
