@@ -1,34 +1,14 @@
-import './button.css';
-// <button onClick= { () => console.log("Clicked") } >{props.text}</button>
-let timer;
-let prevHTML;
-//window.hello="helló";
-//console.log(hello)
+import React, { useState } from 'react';
 
-function clickHappened (e) {
-    //console.log("Clicked");
-    //console.log(e.target);
-    
-    const goodHTML = "Goodbye";
-    
-    if (e.target.innerHTML !== goodHTML) {
-        prevHTML = e.target.innerHTML;
-        e.target.innerHTML = goodHTML;
-        timer = setTimeout(() => {e.target.innerHTML = prevHTML}, 3000);
-        
-    } else {
-        e.target.innerHTML = prevHTML;
-        clearTimeout(timer);
-        console.log(prevHTML);
-        
-    }
-
+function handleClick () {
+    console.log("clicked");
 }
 
-function button(props) {
+function Button () {
+    const [buttonText, setbuttonText] = useState("Click me!");
     return (
-        <button onClick={clickHappened} >{props.text}</button>
+            <button onClick={handleClick}>{buttonText}</button>
     );
 }
 
-export default button;
+export default Button;

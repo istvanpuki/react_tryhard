@@ -1,15 +1,16 @@
 import './App.css';
-import Button from './components/button/button';
+import Button from './components/button/Button';
+
 
 function App() {
   return (
     <>
     <div className="form">
-      <Button text="Send" />
+    <Button /> 
     </div>
     <div>Hello from state_practice branch</div>
     <div className="form2">
-      <Button text="Send2" />
+    <Button />  
     </div>
     </>
   );
