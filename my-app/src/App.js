@@ -1,25 +1,46 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {
 
-  const [count, setCount] = useState(5);
+  const [resourceType, setResourceType] = useState("posts");
+  //Ha alapból a useEffect nyílfüggvény fgv. teste minden egyes rendereléskor megváltozik (ha a képernyő tartalma módusol, akkor fut le)
+  /*
+  useEffect( () => {
+    console.log("render");
+  });
+  */
 
-  function decrementCount () {
-    //setCount(count - 1);
-    setCount(prevCount => prevCount - 1);
-  }
+  //Amikor megváltozik a resourceType akkor fut le
+  /*
+  useEffect( () => {
+    console.log("resource type change ");
+  }, [resourceType] );
+  */
 
-  function incrementCount () {
-    //setCount(count + 1);
-    setCount(prevCount => prevCount + 1);
-  }
+  //Ha a tömb üres akkor csak 1szer fut le
+  /*
+  useEffect( () => {
+    console.log("onmount ");
+  }, [] );
+  */
+
+
+  
+  useEffect( () => {
+    fetch(`https://jsonplaceholder.typicode.com/${resourceType}`)
+      .then(response => response.json())
+      .then(json => console.log(json))
+  }, [resourceType] );
 
   return (
     <>
-      <button onClick={decrementCount}>-</button>
-      <span>{count}</span>
-      <button onClick={incrementCount}>+</button>
+    <div>
+      <button onClick={ () => setResourceType('posts') }>Posts</button>
+      <button onClick={ () => setResourceType('users') }>Users</button>
+      <button onClick={ () => setResourceType('comments') }>Comments</button> 
+    </div>
+    <h1>{resourceType}</h1>
     </>
   );
 }
