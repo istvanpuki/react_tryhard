@@ -7,7 +7,7 @@ function App() {
     <div className="form">
       <Button text="Send" />
     </div>
-    <div>Hello from State_practice branch</div>
+    <div>Hello from state_practice branch</div>
     <div className="form2">
       <Button text="Send2" />
     </div>
