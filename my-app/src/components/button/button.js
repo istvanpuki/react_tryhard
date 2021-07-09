@@ -1,9 +1,9 @@
 import './button.css';
 // <button onClick= { () => console.log("Clicked") } >{props.text}</button>
-let timer;
-let prevHTML;
 //window.hello="helló";
 //console.log(hello)
+let timer;
+let prevHTML;
 
 function clickHappened (e) {
     //console.log("Clicked");
