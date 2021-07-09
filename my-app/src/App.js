@@ -1,16 +1,19 @@
 import './App.css';
 import Button from './components/button/button';
 
+const cars = ["Ferrari", "Mercedes", "BMW", "Aston Martin", "Porsche"]
+
 function App() {
+
   return (
     <>
-    <div className="form">
-      <Button text="Send" />
-    </div>
+    
     <div>Hello from state_practice branch</div>
-    <div className="form2">
-      <Button text="Send2" />
-    </div>
+   
+    {cars.map(car => (
+      
+      <Button text={car} />
+    ))}
     </>
   );
 }
